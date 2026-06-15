@@ -1,0 +1,278 @@
+{
+  "task": "reverse_from_reference",
+  "source_image": "C:/Users/Patch/AppData/Local/Temp/codex-clipboard-19d0cc6d-bc72-4624-b227-0f144634109b.png",
+  "model_targets": [
+    {
+      "label": "OpenAI Image",
+      "model_id": "gpt-image-2"
+    },
+    {
+      "label": "Nano Banana 2",
+      "model_id": "nano-banana-2"
+    }
+  ],
+  "summary": {
+    "scene_type": "marketing_poster",
+    "marketing_intent": "Dragon Boat Festival cultural poster centered on zongzi",
+    "style": [
+      "minimal editorial poster",
+      "festival branding visual",
+      "clean typography with strong white text blocks",
+      "East Asian cultural promotion"
+    ],
+    "layout": [
+      "stacked top headline",
+      "centered hero object",
+      "mid-poster overlay copy",
+      "symmetrical side callouts",
+      "bottom information strip"
+    ],
+    "color_palette": [
+      "light leaf green background",
+      "deep bamboo green subject",
+      "off-white typography",
+      "dark olive footer blocks"
+    ],
+    "materials": [
+      "glossy bamboo leaves",
+      "bamboo raft tray",
+      "flat poster background"
+    ],
+    "ocr_confidence_note": "Large text is clear. Some small footer and side microcopy is visually inferred and should be OCR-confirmed in a scripted version."
+  },
+  "subjects": [
+    {
+      "name": "zongzi",
+      "role": "hero",
+      "attributes": [
+        "realistic wrapped rice dumpling",
+        "green bamboo leaves",
+        "leaf ties",
+        "placed on bamboo raft tray"
+      ]
+    },
+    {
+      "name": "bamboo raft tray",
+      "role": "supporting_element",
+      "attributes": [
+        "horizontal bamboo sticks",
+        "dark binding cords",
+        "acts as base platform"
+      ]
+    }
+  ],
+  "text_slots": [
+    {
+      "slot_id": "top_left_vertical",
+      "role": "badge",
+      "text": "重午",
+      "language": "zh",
+      "position": "top_left",
+      "layout_relation": "vertical text near the upper left corner",
+      "replaceable": true
+    },
+    {
+      "slot_id": "top_right_vertical",
+      "role": "badge",
+      "text": "浴兰",
+      "language": "zh",
+      "position": "top_right",
+      "layout_relation": "vertical text near the upper right corner",
+      "replaceable": true
+    },
+    {
+      "slot_id": "main_headline_en",
+      "role": "headline",
+      "text": "DRAGON BOAT FESTIVAL ZONGZI",
+      "language": "en",
+      "position": "full_width_top",
+      "layout_relation": "large stacked uppercase headline centered above the hero object",
+      "replaceable": true
+    },
+    {
+      "slot_id": "main_subheadline_zh",
+      "role": "subtitle",
+      "text": "一粒粽子 承载的文化",
+      "language": "zh",
+      "position": "top_center",
+      "layout_relation": "large bold Chinese copy directly below the English headline",
+      "replaceable": true
+    },
+    {
+      "slot_id": "side_left_callout",
+      "role": "support_copy",
+      "text": "DRAGON BOAT FESTIVAL（端）",
+      "language": "mixed",
+      "position": "center_left",
+      "layout_relation": "left-side callout aligned to the middle of the hero object",
+      "replaceable": true
+    },
+    {
+      "slot_id": "side_right_callout",
+      "role": "support_copy",
+      "text": "（午）DRAGON BOAT FESTIVAL",
+      "language": "mixed",
+      "position": "center_right",
+      "layout_relation": "right-side callout aligned to the middle of the hero object",
+      "replaceable": true
+    },
+    {
+      "slot_id": "mid_tagline",
+      "role": "headline",
+      "text": "THE AROMA OF DUAN WU MAY 5TH",
+      "language": "en",
+      "position": "center",
+      "layout_relation": "stacked white copy over the lower half of the hero object",
+      "replaceable": true
+    },
+    {
+      "slot_id": "mid_herb_line",
+      "role": "support_copy",
+      "text": "悬 艾 wormwood 菖",
+      "language": "mixed",
+      "position": "bottom_center",
+      "layout_relation": "small herb-related line beneath the central English tagline",
+      "replaceable": true
+    },
+    {
+      "slot_id": "left_microcopy",
+      "role": "support_copy",
+      "text": "赛 龙舟 dragon boat",
+      "language": "mixed",
+      "position": "bottom_left",
+      "layout_relation": "tiny copy near the lower left shoulder of the poster",
+      "replaceable": true
+    },
+    {
+      "slot_id": "right_microcopy",
+      "role": "support_copy",
+      "text": "纪 屈原 Qu Yuan",
+      "language": "mixed",
+      "position": "bottom_right",
+      "layout_relation": "tiny copy near the lower right shoulder of the poster",
+      "replaceable": true
+    },
+    {
+      "slot_id": "bottom_date",
+      "role": "support_copy",
+      "text": "二零二四2024六月JUN拾 农历/五月初五/",
+      "language": "mixed",
+      "position": "full_width_bottom",
+      "layout_relation": "large footer date line centered in the bottom trapezoid panel",
+      "replaceable": true
+    },
+    {
+      "slot_id": "bottom_wish",
+      "role": "cta",
+      "text": "○端午安康@GAUSSIAN BLUR",
+      "language": "mixed",
+      "position": "bottom_center",
+      "layout_relation": "brand or greeting line directly below the date line",
+      "replaceable": true
+    },
+    {
+      "slot_id": "left_footer_block",
+      "role": "badge",
+      "text": "天中",
+      "language": "zh",
+      "position": "bottom_left",
+      "layout_relation": "large vertical text inside the dark left footer block",
+      "replaceable": true
+    },
+    {
+      "slot_id": "right_footer_block",
+      "role": "badge",
+      "text": "五黄",
+      "language": "zh",
+      "position": "bottom_right",
+      "layout_relation": "large vertical text inside the dark right footer block",
+      "replaceable": true
+    }
+  ],
+  "keyword_blocks": {
+    "subject": [
+      "realistic zongzi",
+      "wrapped rice dumpling in glossy green bamboo leaves",
+      "hero food object",
+      "bamboo raft tray"
+    ],
+    "style": [
+      "minimal festival poster",
+      "editorial layout",
+      "graphic design composition",
+      "clean white typography",
+      "cultural branding visual"
+    ],
+    "layout": [
+      "top stacked headline",
+      "centered hero object",
+      "symmetrical side text",
+      "overlay text on object",
+      "wide bottom information band"
+    ],
+    "lighting": [
+      "soft studio lighting",
+      "controlled shadows",
+      "natural glossy leaf highlights"
+    ],
+    "negative": [
+      "no extra food items",
+      "no busy background",
+      "no additional props beyond the bamboo tray",
+      "no distorted text blocks",
+      "no photo collage look"
+    ]
+  },
+  "prompt_variants": {
+    "gpt-image-2": {
+      "language": "en",
+      "prompt": "Create a clean editorial marketing poster for Dragon Boat Festival centered on one realistic zongzi as the hero object. Use a flat light leaf-green background, a single large zongzi wrapped in glossy deep-green bamboo leaves, tied with leaf strips, placed on a horizontal bamboo raft tray. Keep the composition highly symmetrical and graphic. At the top, render a very large stacked off-white uppercase headline reading exactly: DRAGON BOAT FESTIVAL ZONGZI. Directly below it, render bold white Chinese copy reading exactly: 一粒粽子 承载的文化. Add slim diagonal white guide lines framing the upper headline area. Place vertical Chinese text 重午 near the top-left corner and vertical Chinese text 浴兰 near the top-right corner. Add side callouts around the hero object with small white DRAGON BOAT FESTIVAL text and larger white bracketed Chinese characters （端） on the left and （午） on the right. Over the lower half of the zongzi, render stacked white uppercase text reading exactly: THE AROMA OF DUAN WU MAY 5TH. Beneath that, add smaller mixed-language copy reading 悬 艾 wormwood 菖. Add tiny cultural microcopy near the lower left reading 赛 龙舟 dragon boat and near the lower right reading 纪 屈原 Qu Yuan. Build a dark olive footer structure with a centered trapezoid panel. Inside the lower center, render the date line exactly: 二零二四2024六月JUN拾 农历/五月初五/ and below it render exactly: ○端午安康@GAUSSIAN BLUR. In the left and right dark footer blocks, render large vertical Chinese text 天中 and 五黄. Maintain a premium modern poster feel, clean hierarchy, strong negative space, realistic leaf texture, and crisp typography. No extra objects, no clutter, no collage, no distorted text."
+    },
+    "nano-banana-2": {
+      "language": "en",
+      "prompt": "Generate a premium Dragon Boat Festival poster with a minimal graphic design layout. Main subject: one large realistic zongzi wrapped in glossy green bamboo leaves, sitting on a bamboo raft tray, centered in the frame. Background: flat light green. Typography: large off-white stacked headline at the top center reading exactly DRAGON BOAT FESTIVAL ZONGZI, then bold Chinese text directly below reading exactly 一粒粽子 承载的文化. Add vertical Chinese words 重午 at top left and 浴兰 at top right. Keep thin diagonal white lines pointing toward the top headline block. Add left and right mid-poster callouts with small DRAGON BOAT FESTIVAL text plus large bracketed Chinese characters （端） on the left and （午） on the right. Place the text THE AROMA OF DUAN WU MAY 5TH in large stacked white letters over the lower middle of the zongzi. Beneath it add smaller text 悬 艾 wormwood 菖. Add tiny support copy near the lower left 赛 龙舟 dragon boat and near the lower right 纪 屈原 Qu Yuan. Build a dark olive geometric footer with a center trapezoid panel. Render the lower date text exactly 二零二四2024六月JUN拾 农历/五月初五/ and then ○端午安康@GAUSSIAN BLUR. Put large vertical Chinese text 天中 in the left footer block and 五黄 in the right footer block. Style keywords: minimal editorial poster, cultural branding visual, clean white typography, centered hero object, soft studio lighting, realistic bamboo leaf texture, balanced symmetry, negative space. Avoid extra props, avoid background clutter, avoid distorted typography."
+    },
+    "zh_comparison": {
+      "language": "zh",
+      "prompt": "生成一张端午节主题的极简营销海报，整体是干净的编辑风版式。背景为浅粽叶绿色纯色底。主体是一颗写实的大粽子，使用深绿色发亮的粽叶包裹并用叶带扎紧，摆放在横向竹排托盘上，主体居中，构图尽量对称，具有强烈留白和清晰层级。顶部使用大面积米白色英文字体，分层排版并准确呈现：DRAGON BOAT FESTIVAL ZONGZI。其下方使用粗体白色中文并准确呈现：一粒粽子 承载的文化。顶部左右分别放置竖排中文：重午、浴兰，并加入两条细白色斜线形成引导结构。主体中部左右加入辅助文案，左侧为小字 DRAGON BOAT FESTIVAL 配大字（端），右侧为大字（午）配小字 DRAGON BOAT FESTIVAL。粽子下半部叠加大号白色英文文案并准确呈现：THE AROMA OF DUAN WU MAY 5TH。其下加入较小混排文字：悬 艾 wormwood 菖。下方左右加入微小文化注释文字：赛 龙舟 dragon boat 与 纪 屈原 Qu Yuan。底部设计深橄榄绿色几何信息区，中间为梯形面板，准确呈现日期文字：二零二四2024六月JUN拾 农历/五月初五/，其下准确呈现：○端午安康@GAUSSIAN BLUR。左右深色底块中分别放置竖排大字：天中、五黄。整体风格要高级、现代、克制、平面设计感强，粽叶材质真实，文字清晰，不要额外食物，不要杂乱背景，不要拼贴感，不要文字变形。"
+    }
+  },
+  "template": {
+    "template_id": "sample_dragon_boat_001",
+    "template_name": "dragon-boat-zongzi-poster",
+    "scene_type": "marketing_poster",
+    "style_tags": [
+      "festival",
+      "food",
+      "minimal",
+      "editorial",
+      "bilingual typography"
+    ],
+    "layout_tags": [
+      "top headline",
+      "center hero",
+      "side callouts",
+      "footer information band"
+    ],
+    "editable_slots": [
+      "main_headline_en",
+      "main_subheadline_zh",
+      "mid_tagline",
+      "mid_herb_line",
+      "bottom_date",
+      "bottom_wish"
+    ],
+    "preserve_style": true,
+    "preserve_layout": true,
+    "revision_history": [],
+    "quality_notes": [
+      "This poster relies heavily on mixed Chinese and English typography, so text rendering is the riskiest part of reproduction.",
+      "The hero object and footer geometry are strong anchors and should be preserved in revision rounds."
+    ]
+  },
+  "revision_guidance": [
+    "If the generated image loses the strong centered zongzi shape, increase hero object size and reduce other visual elements.",
+    "If the text becomes chaotic, simplify copy in the first generation round and restore smaller microcopy in a second pass.",
+    "If the footer geometry drifts, explicitly restate the dark side blocks and centered trapezoid footer panel."
+  ]
+}
