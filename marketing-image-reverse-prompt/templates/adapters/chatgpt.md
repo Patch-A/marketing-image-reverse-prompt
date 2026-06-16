@@ -1,7 +1,10 @@
 Use the shared `marketing-image-reverse-prompt` workflow to analyze the uploaded marketing image.
 
 Return structured output with these sections when applicable:
+- `task`
+- `model_targets`
 - `analysis`
+- `summary`
 - `ocr`
 - `subjects`
 - `text_slots`
