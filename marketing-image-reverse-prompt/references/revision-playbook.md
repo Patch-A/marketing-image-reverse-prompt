@@ -57,3 +57,15 @@ When a revision appears effective, save:
 - correction strategy
 - revised prompt version
 - model target if relevant
+
+## OCR Failure Modes
+
+- missing vertical labels
+- merged microcopy lines
+- stylized text misread as decorative shapes
+- confidence too low for small footer copy
+
+Corrections:
+- rerun OCR with a different language pack
+- crop the text region and re-run OCR
+- keep uncertain strings in a review queue instead of forcing a final slot
