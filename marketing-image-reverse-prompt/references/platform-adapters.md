@@ -35,23 +35,23 @@ For every adapter, pair the host-specific prompt with:
 ### ChatGPT
 
 ```text
-Use the shared marketing-image-reverse-prompt workflow on this uploaded marketing image. Return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Preserve exact copy and use OCR only as a first-pass draft.
+Use the shared marketing-image-reverse-prompt workflow on this uploaded marketing image. Return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `element_blocks`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Preserve exact copy and use OCR only as a first-pass draft.
 ```
 
 ### Claude
 
 ```text
-Analyze this marketing visual as a reusable generation template rather than a caption. Follow the shared schema with `task`, `model_targets`, `summary`, `ocr`, `subjects`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Keep ambiguous OCR text flagged for review.
+Analyze this marketing visual as a reusable generation template rather than a caption. Follow the shared schema with `task`, `model_targets`, `summary`, `ocr`, `subjects`, `element_blocks`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Keep ambiguous OCR text flagged for review.
 ```
 
 ### Gemini
 
 ```text
-Use the shared workflow to reverse-engineer this text-heavy marketing image. Output `task`, `model_targets`, `summary`, `ocr`, `subjects`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`, and preserve the original text language exactly.
+Use the shared workflow to reverse-engineer this text-heavy marketing image. Output `task`, `model_targets`, `summary`, `ocr`, `subjects`, `element_blocks`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`, and preserve the original text language exactly.
 ```
 
 ### Generic agent
 
 ```text
-Task: convert this copy-heavy marketing image into a reusable prompt template. Use OCR if available, then return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`.
+Task: convert this copy-heavy marketing image into a reusable prompt template. Use OCR if available, then return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `element_blocks`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`.
 ```
