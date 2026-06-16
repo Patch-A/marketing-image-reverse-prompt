@@ -8,6 +8,7 @@ Use structured output whenever the task goes beyond casual brainstorming.
 - `model_targets`
 - `summary`
 - `subjects`
+- `element_blocks`
 - `text_slots`
 - `ornaments`
 - `keyword_blocks`
@@ -59,6 +60,29 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
       "name": "iced coffee cup",
       "role": "hero",
       "attributes": ["transparent cup", "ice cubes", "cream foam"]
+    }
+  ],
+  "element_blocks": [
+    {
+      "element_id": "hero_product_cluster",
+      "role": "hero_subject",
+      "replaceable": true,
+      "swap_difficulty": "medium",
+      "keywords": ["single iced coffee cup", "front-facing cup", "clear lid", "condensation"],
+      "layout_anchor": "center",
+      "bbox_norm": {
+        "x": 0.33,
+        "y": 0.28,
+        "w": 0.28,
+        "h": 0.38
+      },
+      "preserve_when_swapping": [
+        "overall silhouette",
+        "center placement",
+        "relative scale",
+        "lighting direction"
+      ],
+      "depends_on": ["bottom_cta_band"]
     }
   ],
   "ocr": {
@@ -127,6 +151,7 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
     "template_name": "summer-drink-poster",
     "scene_type": "marketing_poster",
     "editable_slots": ["headline"],
+    "replaceable_elements": ["hero_product_cluster"],
     "preserve_style": true,
     "preserve_layout": true,
     "revision_history": []
@@ -137,6 +162,8 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
 ## Field Rules
 
 - Keep `text_slots[].text` exactly as it appears in the source image unless the user explicitly asks for rewritten copy.
+- Use `subjects` for coarse scene understanding and `element_blocks` for reusable visual modules that may be swapped independently.
+- Use `element_blocks[].keywords` as the portable subject-swap layer for hero products, props, packaging groups, typography systems, or environment modules.
 - If OCR is used, retain raw OCR candidates in `ocr.items` and promote only reviewed text into `text_slots`.
 - Keep `prompt_variants` separate by model.
 - Always include the Chinese comparison prompt in `prompt_variants.zh_comparison`.
@@ -170,3 +197,28 @@ Make each difference concrete and actionable.
 - Keep OCR candidates and final slots separate.
 - Use `review_needed` for tiny, stylized, vertical, or ambiguous text.
 - Record the OCR engine and language when available.
+
+## Element Block Notes
+
+Use `element_blocks` when the image contains major visual modules that may need to be preserved or replaced later.
+
+Recommended fields:
+- `element_id`
+- `role`
+- `replaceable`
+- `swap_difficulty`
+- `keywords`
+- `layout_anchor`
+- `bbox_norm`
+- `preserve_when_swapping`
+- `depends_on`
+
+Recommended role values:
+- `hero_subject`
+- `secondary_subject`
+- `support_prop`
+- `background_system`
+- `ornament_cluster`
+- `typography_system`
+- `offer_module`
+- `brand_module`
