@@ -101,3 +101,7 @@ Include only constraints that matter to reproduction quality, such as:
 - no unrelated props
 
 Avoid bloating the prompt with dozens of negatives unless the image clearly requires it.
+
+## OCR Integration
+
+If OCR is available, use it as a draft input only. Preserve exact source text in the final slot data, and do not let noisy OCR override visual confirmation for hero headlines or tiny microcopy.
