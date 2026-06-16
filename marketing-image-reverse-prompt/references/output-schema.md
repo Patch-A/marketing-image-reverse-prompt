@@ -62,8 +62,8 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
     }
   ],
   "ocr": {
-    "engine": "tesseract",
-    "language": "chi_sim+eng",
+    "engine": "rapidocr",
+    "language": "auto",
     "items": [
       {
         "text": "headline",
