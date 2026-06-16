@@ -8,6 +8,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+from PIL import Image
+
 
 TESSERACT_LANG_FALLBACKS = ["chi_sim+eng", "chi_tra+eng", "eng"]
 
@@ -17,6 +19,7 @@ class OcrItem:
     text: str
     confidence: float | None
     bbox: list[float]
+    bbox_norm: list[float]
     review_needed: bool
     source: str
 
@@ -31,6 +34,23 @@ def normalize_bbox(points: list[list[float]]) -> list[float]:
     return [round(left, 2), round(top, 2), round(width, 2), round(height, 2)]
 
 
+def normalize_rect(rect: list[float], image_size: dict[str, int]) -> list[float]:
+    width = max(image_size["width"], 1)
+    height = max(image_size["height"], 1)
+    left, top, box_width, box_height = rect
+    return [
+        round(left / width, 4),
+        round(top / height, 4),
+        round(box_width / width, 4),
+        round(box_height / height, 4),
+    ]
+
+
+def read_image_size(image_path: Path) -> dict[str, int]:
+    with Image.open(image_path) as image:
+        return {"width": image.width, "height": image.height}
+
+
 def rapidocr_available() -> bool:
     try:
         from rapidocr_onnxruntime import RapidOCR  # noqa: F401
@@ -39,7 +59,7 @@ def rapidocr_available() -> bool:
     return True
 
 
-def run_rapidocr(image_path: Path, review_threshold: float) -> dict[str, Any]:
+def run_rapidocr(image_path: Path, review_threshold: float, image_size: dict[str, int]) -> dict[str, Any]:
     from rapidocr_onnxruntime import RapidOCR
 
     engine = RapidOCR()
@@ -52,11 +72,13 @@ def run_rapidocr(image_path: Path, review_threshold: float) -> dict[str, Any]:
         if not text:
             continue
         confidence = float(score) if score is not None else None
+        bbox = normalize_bbox(points)
         items.append(
             OcrItem(
                 text=text,
                 confidence=confidence,
-                bbox=normalize_bbox(points),
+                bbox=bbox,
+                bbox_norm=normalize_rect(bbox, image_size),
                 review_needed=confidence is None or confidence < review_threshold,
                 source="rapidocr",
             )
@@ -65,6 +87,7 @@ def run_rapidocr(image_path: Path, review_threshold: float) -> dict[str, Any]:
     return {
         "engine": "rapidocr",
         "language": "auto",
+        "image_size": image_size,
         "items": [asdict(item) for item in items],
         "errors": [],
     }
@@ -74,7 +97,9 @@ def tesseract_available() -> bool:
     return shutil.which("tesseract") is not None
 
 
-def run_tesseract_once(image_path: Path, lang: str, review_threshold: float) -> dict[str, Any]:
+def run_tesseract_once(
+    image_path: Path, lang: str, review_threshold: float, image_size: dict[str, int]
+) -> dict[str, Any]:
     if not tesseract_available():
         raise RuntimeError("tesseract not found on PATH")
 
@@ -109,16 +134,18 @@ def run_tesseract_once(image_path: Path, lang: str, review_threshold: float) -> 
 
         raw_conf = row.get("conf", "-1")
         confidence = None if raw_conf in {"", "-1"} else float(raw_conf) / 100.0
+        bbox = [
+            float(row.get("left", 0)),
+            float(row.get("top", 0)),
+            float(row.get("width", 0)),
+            float(row.get("height", 0)),
+        ]
         items.append(
             OcrItem(
                 text=text,
                 confidence=confidence,
-                bbox=[
-                    float(row.get("left", 0)),
-                    float(row.get("top", 0)),
-                    float(row.get("width", 0)),
-                    float(row.get("height", 0)),
-                ],
+                bbox=bbox,
+                bbox_norm=normalize_rect(bbox, image_size),
                 review_needed=confidence is None or confidence < review_threshold,
                 source="tesseract",
             )
@@ -127,6 +154,7 @@ def run_tesseract_once(image_path: Path, lang: str, review_threshold: float) -> 
     return {
         "engine": "tesseract",
         "language": lang,
+        "image_size": image_size,
         "items": [asdict(item) for item in items],
         "errors": [],
     }
@@ -143,11 +171,12 @@ def cleanup_tesseract_artifacts(output_base: Path) -> None:
 
 def extract(image_path: Path, engine_name: str, review_threshold: float) -> dict[str, Any]:
     errors: list[str] = []
+    image_size = read_image_size(image_path)
 
     if engine_name in {"auto", "rapidocr"}:
         if rapidocr_available():
             try:
-                return run_rapidocr(image_path, review_threshold)
+                return run_rapidocr(image_path, review_threshold, image_size)
             except Exception as exc:  # noqa: BLE001
                 errors.append(f"rapidocr: {exc}")
         elif engine_name == "rapidocr":
@@ -156,7 +185,7 @@ def extract(image_path: Path, engine_name: str, review_threshold: float) -> dict
     if engine_name in {"auto", "tesseract"}:
         for lang in TESSERACT_LANG_FALLBACKS:
             try:
-                result = run_tesseract_once(image_path, lang, review_threshold)
+                result = run_tesseract_once(image_path, lang, review_threshold, image_size)
                 result["errors"] = errors
                 return result
             except Exception as exc:  # noqa: BLE001
@@ -165,6 +194,7 @@ def extract(image_path: Path, engine_name: str, review_threshold: float) -> dict
     return {
         "engine": None,
         "language": None,
+        "image_size": image_size,
         "items": [],
         "errors": errors or ["no OCR engine available"],
     }

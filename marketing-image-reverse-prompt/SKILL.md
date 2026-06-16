@@ -32,22 +32,23 @@ Do not optimize for:
    - `revise_generated_result`: compare a first-pass generated image against the reference and produce a revised prompt.
 2. Confirm the image is a marketing visual with meaningful embedded copy. If it is not, still help, but state that the output is optimized for copy-heavy layouts.
 3. If OCR automation is available, run it first and use the raw result as a draft; otherwise read the image manually.
-4. Analyze the image in layers:
+4. If color fidelity matters and palette sampling is available, run it before finalizing color descriptions.
+5. Analyze the image in layers:
    - scene type and marketing intent
    - main subject and supporting elements
    - style, color palette, texture, lighting, and composition
    - aspect ratio, canvas orientation, safe margins, and relative scale
    - decorative guides, faint lines, translucent overlays, and microcopy
    - text hierarchy and layout relationships
-5. Extract every visible text slot and preserve the original text exactly as shown.
-6. Identify major reusable visual modules such as hero products, spokespeople, props, packaging clusters, typography systems, coupon groups, or branded footer systems.
-7. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
-8. Generate:
+6. Extract every visible text slot and preserve the original text exactly as shown.
+7. Identify major reusable visual modules such as hero products, spokespeople, props, packaging clusters, typography systems, coupon groups, or branded footer systems.
+8. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
+9. Generate:
    - English primary prompts
    - a fully Chinese comparison prompt
    - a structured template object
-9. Save or update the template record when a storage path or template store is available.
-10. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
+10. Save or update the template record when a storage path or template store is available.
+11. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
 
 Read [references/output-schema.md](references/output-schema.md) before producing machine-readable output.
 
@@ -174,6 +175,8 @@ Capture:
 
 If possible, record a compact palette summary that can later be turned into exact tokens or sampled swatches.
 
+If automation is available, use [references/color-automation.md](references/color-automation.md) to capture swatches before prompt writing.
+
 ## Ornament Handling
 
 Treat faint lines, guide marks, footer shapes, translucent overlays, and decorative rules as first-class layout elements.
@@ -234,3 +237,7 @@ Prefer explicit, inspectable iteration over hidden automatic learning. The first
 ## OCR Support
 
 When text extraction matters, prefer the bundled OCR helper and then refine the result by visual review. See [references/ocr-automation.md](references/ocr-automation.md).
+
+## Palette Support
+
+When color matching matters, prefer the bundled palette helper before finalizing `summary.color_fidelity`. See [references/color-automation.md](references/color-automation.md).

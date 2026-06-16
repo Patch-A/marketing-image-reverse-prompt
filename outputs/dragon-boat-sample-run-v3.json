@@ -1,0 +1,776 @@
+{
+  "schema_version": "3.0",
+  "task": "reverse_from_reference",
+  "source_image": "dragon-boat-zongzi-reference.png",
+  "model_targets": [
+    {
+      "label": "OpenAI Image",
+      "model_id": "gpt-image-2"
+    },
+    {
+      "label": "Nano Banana 2",
+      "model_id": "nano-banana-2"
+    }
+  ],
+  "summary": {
+    "scene_type": "marketing_poster",
+    "marketing_intent": "Dragon Boat Festival cultural poster centered on zongzi",
+    "style": [
+      "minimal editorial poster",
+      "festival branding visual",
+      "clean white typography",
+      "East Asian cultural promotion"
+    ],
+    "layout": [
+      "stacked top headline",
+      "centered hero object",
+      "mid-poster overlay copy",
+      "symmetrical side callouts",
+      "geometric bottom information band"
+    ],
+    "color_fidelity": {
+      "background_hex": "#A0B54D",
+      "hero_primary_hex": "#2E4A1D",
+      "hero_secondary_hex": "#546B2A",
+      "type_hex": "#F5F1DA",
+      "footer_hex": "#263116",
+      "palette_note": "muted yellow-olive green background, dark natural leaf green hero, warm off-white typography, and very dark olive footer shapes",
+      "swatches": [
+        {
+          "hex": "#A0B54D",
+          "rgb": [160, 181, 77],
+          "ratio": 0.43
+        },
+        {
+          "hex": "#2E4A1D",
+          "rgb": [46, 74, 29],
+          "ratio": 0.22
+        },
+        {
+          "hex": "#F5F1DA",
+          "rgb": [245, 241, 218],
+          "ratio": 0.16
+        },
+        {
+          "hex": "#263116",
+          "rgb": [38, 49, 22],
+          "ratio": 0.12
+        }
+      ]
+    },
+    "size_constraints": {
+      "aspect_ratio": "3:4",
+      "orientation": "portrait",
+      "canvas_size_px": {
+        "width": 690,
+        "height": 920
+      },
+      "safe_margins_norm": {
+        "top": 0.04,
+        "right": 0.05,
+        "bottom": 0.06,
+        "left": 0.05
+      },
+      "hero_scale_norm": 0.57,
+      "footer_band_height_norm": 0.18,
+      "top_headline_block_height_norm": 0.24
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "hero_zongzi",
+      "name": "zongzi",
+      "role": "hero",
+      "bbox_norm": {
+        "x": 0.13,
+        "y": 0.21,
+        "w": 0.71,
+        "h": 0.57
+      },
+      "attributes": [
+        "realistic wrapped rice dumpling",
+        "glossy green bamboo leaves",
+        "leaf ties",
+        "placed on bamboo raft tray"
+      ]
+    },
+    {
+      "subject_id": "bamboo_tray",
+      "name": "bamboo raft tray",
+      "role": "supporting_element",
+      "bbox_norm": {
+        "x": 0.0,
+        "y": 0.67,
+        "w": 1.0,
+        "h": 0.17
+      },
+      "attributes": [
+        "horizontal bamboo sticks",
+        "dark binding cords",
+        "acts as base platform"
+      ]
+    }
+  ],
+  "element_blocks": [
+    {
+      "element_id": "hero_zongzi_cluster",
+      "role": "hero_subject",
+      "replaceable": true,
+      "swap_difficulty": "medium",
+      "keywords": [
+        "single large realistic zongzi",
+        "glossy bamboo leaves",
+        "centered hero food object",
+        "festival poster focal product"
+      ],
+      "layout_anchor": "center",
+      "bbox_norm": {
+        "x": 0.13,
+        "y": 0.21,
+        "w": 0.71,
+        "h": 0.57
+      },
+      "preserve_when_swapping": [
+        "overall silhouette",
+        "center placement",
+        "relative scale",
+        "lighting direction"
+      ],
+      "depends_on": [
+        "bamboo_tray_system",
+        "bottom_footer_system"
+      ]
+    },
+    {
+      "element_id": "bamboo_tray_system",
+      "role": "support_prop",
+      "replaceable": true,
+      "swap_difficulty": "easy",
+      "keywords": [
+        "horizontal bamboo raft tray",
+        "natural bamboo sticks",
+        "base support platform"
+      ],
+      "layout_anchor": "bottom_center",
+      "bbox_norm": {
+        "x": 0.0,
+        "y": 0.67,
+        "w": 1.0,
+        "h": 0.17
+      },
+      "preserve_when_swapping": [
+        "full-width tray span",
+        "low horizontal placement"
+      ],
+      "depends_on": []
+    },
+    {
+      "element_id": "bottom_footer_system",
+      "role": "brand_module",
+      "replaceable": true,
+      "swap_difficulty": "hard",
+      "keywords": [
+        "dark olive footer band",
+        "center trapezoid panel",
+        "left and right dark blocks",
+        "festival information zone"
+      ],
+      "layout_anchor": "bottom_full_width",
+      "bbox_norm": {
+        "x": 0.0,
+        "y": 0.82,
+        "w": 1.0,
+        "h": 0.18
+      },
+      "preserve_when_swapping": [
+        "footer height",
+        "trapezoid geometry",
+        "left and right block placement"
+      ],
+      "depends_on": [
+        "footer_date_line",
+        "footer_greeting_line"
+      ]
+    }
+  ],
+  "ocr": {
+    "engine": "sample-reviewed-draft",
+    "language": "mixed",
+    "image_size": {
+      "width": 690,
+      "height": 920
+    },
+    "items": [
+      {
+        "text": "DRAGON BOAT",
+        "confidence": 0.99,
+        "bbox": [124.2, 9.2, 448.5, 54.0],
+        "bbox_norm": [0.18, 0.01, 0.65, 0.0587],
+        "review_needed": false,
+        "source": "visual_review"
+      },
+      {
+        "text": "一颗粽子",
+        "confidence": 0.88,
+        "bbox": [200.1, 156.4, 193.2, 51.5],
+        "bbox_norm": [0.29, 0.17, 0.28, 0.056],
+        "review_needed": false,
+        "source": "visual_review"
+      },
+      {
+        "text": "赛 龙 dragon boat 舟",
+        "confidence": 0.62,
+        "bbox": [27.6, 708.4, 96.6, 27.6],
+        "bbox_norm": [0.04, 0.77, 0.14, 0.03],
+        "review_needed": true,
+        "source": "visual_inference"
+      },
+      {
+        "text": "纪 屈 Qu Yuan 原",
+        "confidence": 0.58,
+        "bbox": [565.8, 708.4, 96.6, 27.6],
+        "bbox_norm": [0.82, 0.77, 0.14, 0.03],
+        "review_needed": true,
+        "source": "visual_inference"
+      }
+    ],
+    "errors": []
+  },
+  "slot_groups": [
+    {
+      "group_id": "top_headline_block",
+      "description": "Primary English and Chinese headline block"
+    },
+    {
+      "group_id": "side_callouts",
+      "description": "Left and right supporting callouts beside the hero object"
+    },
+    {
+      "group_id": "center_overlay_block",
+      "description": "Main English overlay copy and herb-related supporting line"
+    },
+    {
+      "group_id": "footer_block",
+      "description": "Bottom date, greeting, and footer labels"
+    }
+  ],
+  "text_slots": [
+    {
+      "slot_id": "top_left_vertical",
+      "slot_group_id": "top_headline_block",
+      "role": "badge",
+      "text_original": "重午",
+      "text_normalized": "重午",
+      "language": "zh",
+      "position": "top_left",
+      "bbox_norm": {
+        "x": 0.04,
+        "y": 0.02,
+        "w": 0.08,
+        "h": 0.11
+      },
+      "alignment": "center",
+      "orientation": "vertical",
+      "line_count": 2,
+      "font_scale_tier": "small",
+      "layout_relation": "vertical text near the upper left corner",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "corner festival ornament by default",
+      "ocr_confidence": 0.97,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "top_right_vertical",
+      "slot_group_id": "top_headline_block",
+      "role": "badge",
+      "text_original": "浴兰",
+      "text_normalized": "浴兰",
+      "language": "zh",
+      "position": "top_right",
+      "bbox_norm": {
+        "x": 0.88,
+        "y": 0.02,
+        "w": 0.08,
+        "h": 0.11
+      },
+      "alignment": "center",
+      "orientation": "vertical",
+      "line_count": 2,
+      "font_scale_tier": "small",
+      "layout_relation": "vertical text near the upper right corner",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "corner festival ornament by default",
+      "ocr_confidence": 0.95,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "main_headline_en",
+      "slot_group_id": "top_headline_block",
+      "role": "headline",
+      "text_original": "DRAGON BOAT FESTIVAL ZONGZI",
+      "text_normalized": "DRAGON BOAT FESTIVAL ZONGZI",
+      "language": "en",
+      "position": "full_width_top",
+      "bbox_norm": {
+        "x": 0.18,
+        "y": 0.01,
+        "w": 0.65,
+        "h": 0.18
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 3,
+      "font_scale_tier": "xl",
+      "line_breaks": [
+        "DRAGON BOAT",
+        "FESTIVAL",
+        "ZONGZI"
+      ],
+      "layout_relation": "large stacked uppercase headline centered above the hero object",
+      "replaceable": true,
+      "editable_by_default": true,
+      "locked_reason": null,
+      "ocr_confidence": 0.99,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "main_subheadline_zh",
+      "slot_group_id": "top_headline_block",
+      "role": "subtitle",
+      "text_original": "一颗粽子 承载的文化",
+      "text_normalized": "一颗粽子 承载的文化",
+      "language": "zh",
+      "position": "top_center",
+      "bbox_norm": {
+        "x": 0.29,
+        "y": 0.17,
+        "w": 0.36,
+        "h": 0.13
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 2,
+      "font_scale_tier": "lg",
+      "line_breaks": [
+        "一颗粽子",
+        "承载的文化"
+      ],
+      "layout_relation": "large bold Chinese copy directly below the English headline",
+      "replaceable": true,
+      "editable_by_default": true,
+      "locked_reason": null,
+      "ocr_confidence": 0.88,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "side_left_callout_zh",
+      "slot_group_id": "side_callouts",
+      "role": "badge",
+      "text_original": "（端）",
+      "text_normalized": "（端）",
+      "language": "zh",
+      "position": "center_left",
+      "bbox_norm": {
+        "x": 0.18,
+        "y": 0.40,
+        "w": 0.15,
+        "h": 0.07
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "lg",
+      "layout_relation": "large bracketed Chinese character beside the left callout text",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "festival character ornament by default",
+      "ocr_confidence": 0.96,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "side_right_callout_zh",
+      "slot_group_id": "side_callouts",
+      "role": "badge",
+      "text_original": "（午）",
+      "text_normalized": "（午）",
+      "language": "zh",
+      "position": "center_right",
+      "bbox_norm": {
+        "x": 0.68,
+        "y": 0.40,
+        "w": 0.15,
+        "h": 0.07
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "lg",
+      "layout_relation": "large bracketed Chinese character beside the right callout text",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "festival character ornament by default",
+      "ocr_confidence": 0.96,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "mid_tagline_en",
+      "slot_group_id": "center_overlay_block",
+      "role": "headline",
+      "text_original": "THE AROMA OF DUAN WU MAY 5TH",
+      "text_normalized": "THE AROMA OF DUAN WU MAY 5TH",
+      "language": "en",
+      "position": "center",
+      "bbox_norm": {
+        "x": 0.31,
+        "y": 0.59,
+        "w": 0.39,
+        "h": 0.14
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 4,
+      "font_scale_tier": "lg",
+      "line_breaks": [
+        "THE",
+        "AROMA",
+        "OF DUAN WU",
+        "MAY 5TH"
+      ],
+      "layout_relation": "stacked white copy over the lower half of the hero object",
+      "replaceable": true,
+      "editable_by_default": true,
+      "locked_reason": null,
+      "ocr_confidence": 0.99,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "center_hanging_char",
+      "slot_group_id": "center_overlay_block",
+      "role": "support_copy",
+      "text_original": "悬",
+      "text_normalized": "悬",
+      "language": "zh",
+      "position": "bottom_center",
+      "bbox_norm": {
+        "x": 0.47,
+        "y": 0.74,
+        "w": 0.04,
+        "h": 0.04
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "medium",
+      "layout_relation": "single Chinese character centered below the main English overlay copy",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "small cultural accent by default",
+      "ocr_confidence": 0.83,
+      "source": "visual_review",
+      "review_needed": true
+    },
+    {
+      "slot_id": "herb_line_mixed",
+      "slot_group_id": "center_overlay_block",
+      "role": "support_copy",
+      "text_original": "艾 wormwood 菖",
+      "text_normalized": "艾 wormwood 菖",
+      "language": "mixed",
+      "position": "bottom_center",
+      "bbox_norm": {
+        "x": 0.34,
+        "y": 0.80,
+        "w": 0.32,
+        "h": 0.04
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "small",
+      "layout_relation": "mixed-language herb annotation below the center hanging character",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "small secondary annotation by default",
+      "ocr_confidence": 0.86,
+      "source": "visual_review",
+      "review_needed": true
+    },
+    {
+      "slot_id": "footer_date_line",
+      "slot_group_id": "footer_block",
+      "role": "support_copy",
+      "text_original": "二零二四2024六月JUN拾",
+      "text_normalized": "二零二四2024六月JUN拾",
+      "language": "mixed",
+      "position": "full_width_bottom",
+      "bbox_norm": {
+        "x": 0.25,
+        "y": 0.87,
+        "w": 0.50,
+        "h": 0.05
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "medium",
+      "layout_relation": "upper line inside the centered bottom trapezoid panel",
+      "replaceable": true,
+      "editable_by_default": true,
+      "locked_reason": null,
+      "ocr_confidence": 0.67,
+      "source": "visual_review",
+      "review_needed": true
+    },
+    {
+      "slot_id": "footer_lunar_line",
+      "slot_group_id": "footer_block",
+      "role": "support_copy",
+      "text_original": "农历/五月初五/",
+      "text_normalized": "农历/五月初五/",
+      "language": "zh",
+      "position": "bottom_center",
+      "bbox_norm": {
+        "x": 0.29,
+        "y": 0.91,
+        "w": 0.42,
+        "h": 0.04
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "medium",
+      "layout_relation": "middle line inside the centered bottom trapezoid panel",
+      "replaceable": true,
+      "editable_by_default": true,
+      "locked_reason": null,
+      "ocr_confidence": 0.92,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "footer_greeting_line",
+      "slot_group_id": "footer_block",
+      "role": "cta",
+      "text_original": "○端午安康@GAUSSIAN BLUR",
+      "text_normalized": "○端午安康@GAUSSIAN BLUR",
+      "language": "mixed",
+      "position": "bottom_center",
+      "bbox_norm": {
+        "x": 0.20,
+        "y": 0.94,
+        "w": 0.58,
+        "h": 0.04
+      },
+      "alignment": "center",
+      "orientation": "horizontal",
+      "line_count": 1,
+      "font_scale_tier": "medium",
+      "layout_relation": "bottom line inside the centered bottom trapezoid panel",
+      "replaceable": true,
+      "editable_by_default": true,
+      "locked_reason": null,
+      "ocr_confidence": 0.95,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "left_footer_block",
+      "slot_group_id": "footer_block",
+      "role": "badge",
+      "text_original": "天中",
+      "text_normalized": "天中",
+      "language": "zh",
+      "position": "bottom_left",
+      "bbox_norm": {
+        "x": 0.02,
+        "y": 0.85,
+        "w": 0.12,
+        "h": 0.13
+      },
+      "alignment": "center",
+      "orientation": "vertical",
+      "line_count": 2,
+      "font_scale_tier": "xl",
+      "layout_relation": "large vertical text inside the dark left footer block",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "strong thematic footer ornament by default",
+      "ocr_confidence": 0.97,
+      "source": "visual_review",
+      "review_needed": false
+    },
+    {
+      "slot_id": "right_footer_block",
+      "slot_group_id": "footer_block",
+      "role": "badge",
+      "text_original": "五黄",
+      "text_normalized": "五黄",
+      "language": "zh",
+      "position": "bottom_right",
+      "bbox_norm": {
+        "x": 0.88,
+        "y": 0.85,
+        "w": 0.10,
+        "h": 0.13
+      },
+      "alignment": "center",
+      "orientation": "vertical",
+      "line_count": 2,
+      "font_scale_tier": "xl",
+      "layout_relation": "large vertical text inside the dark right footer block",
+      "replaceable": true,
+      "editable_by_default": false,
+      "locked_reason": "strong thematic footer ornament by default",
+      "ocr_confidence": 0.97,
+      "source": "visual_review",
+      "review_needed": false
+    }
+  ],
+  "ornaments": [
+    {
+      "ornament_id": "diag_line_left",
+      "type": "guide_line",
+      "position": "upper_left_to_center",
+      "color": "#F5F1DA",
+      "opacity_strength": "medium",
+      "bbox_norm": {
+        "x": 0.06,
+        "y": 0.19,
+        "w": 0.18,
+        "h": 0.24
+      },
+      "layout_relation": "thin diagonal line guiding toward the top headline block from the left side"
+    },
+    {
+      "ornament_id": "diag_line_right",
+      "type": "guide_line",
+      "position": "upper_right_to_center",
+      "color": "#F5F1DA",
+      "opacity_strength": "medium",
+      "bbox_norm": {
+        "x": 0.73,
+        "y": 0.19,
+        "w": 0.18,
+        "h": 0.24
+      },
+      "layout_relation": "thin diagonal line guiding toward the top headline block from the right side"
+    },
+    {
+      "ornament_id": "footer_trapezoid",
+      "type": "shape_panel",
+      "position": "bottom_center",
+      "color": "#5D7441",
+      "opacity_strength": "solid",
+      "bbox_norm": {
+        "x": 0.17,
+        "y": 0.83,
+        "w": 0.64,
+        "h": 0.17
+      },
+      "layout_relation": "centered trapezoid information panel embedded in the dark footer band"
+    }
+  ],
+  "keyword_blocks": {
+    "subject": [
+      "realistic zongzi",
+      "wrapped rice dumpling in glossy green bamboo leaves",
+      "hero food object",
+      "bamboo raft tray"
+    ],
+    "style": [
+      "minimal festival poster",
+      "editorial layout",
+      "graphic design composition",
+      "clean white typography",
+      "cultural branding visual"
+    ],
+    "layout": [
+      "stacked top headline",
+      "centered hero object",
+      "symmetrical side callouts",
+      "overlay text on object",
+      "geometric footer information band"
+    ],
+    "lighting": [
+      "soft studio lighting",
+      "controlled shadows",
+      "natural glossy leaf highlights"
+    ],
+    "negative": [
+      "no extra food items",
+      "no busy background",
+      "no additional props beyond the bamboo tray",
+      "no distorted text blocks",
+      "no photo collage look"
+    ]
+  },
+  "prompt_variants": {
+    "gpt-image-2": {
+      "language": "en",
+      "text_fidelity_mode": "balanced",
+      "prompt": "Create a clean editorial marketing poster for Dragon Boat Festival using a 3:4 vertical canvas matching the reference proportions, approximately 690 by 920 pixels. Keep a portrait layout with safe text margins of about 4% on top, 5% on left and right, and 6% on the bottom. Use a muted yellow-olive green background, not a bright fresh green. The hero object should be a single large realistic zongzi wrapped in glossy dark natural bamboo leaves with layered green tones, tied with leaf strips, placed on a horizontal bamboo raft tray. Keep the hero object centered and large, occupying roughly 55% to 60% of the canvas height, with the tray spanning most of the lower width. Reserve a bottom information band about 18% of the canvas height, and keep the top headline block within about the top 24% of the canvas. Keep the composition highly symmetrical and graphic. Use warm off-white typography rather than pure white, and make the footer blocks very dark olive green, close to black-green. At the top, render a very large stacked off-white uppercase headline with three lines reading exactly: DRAGON BOAT / FESTIVAL / ZONGZI. Directly below it, render bold white Chinese copy in two lines reading exactly: 一颗粽子 / 承载的文化. Place vertical Chinese text 重午 near the top-left corner and vertical Chinese text 浴兰 near the top-right corner, both inside the outer safe margins. Add slim faint diagonal off-white guide lines framing the upper headline area. Add left and right mid-poster callouts with larger bracketed Chinese characters （端） and （午）. Over the lower half of the zongzi, render stacked white uppercase text reading exactly: THE / AROMA / OF DUAN WU / MAY 5TH. Beneath that, add a small centered Chinese character 悬, then a herb line reading 艾 wormwood 菖. Build a dark olive footer with a centered trapezoid panel. In the bottom panel, render three lines of copy: 二零二四2024六月JUN拾, then 农历/五月初五/, then ○端午安康@GAUSSIAN BLUR. Put large vertical Chinese text 天中 in the dark left footer block and 五黄 in the dark right footer block. Maintain a premium modern poster feel, clean hierarchy, strong negative space, realistic leaf texture, and crisp typography. No extra objects, no clutter, no collage, no distorted text."
+    },
+    "nano-banana-2": {
+      "language": "en",
+      "text_fidelity_mode": "balanced",
+      "prompt": "Generate a premium Dragon Boat Festival poster with a minimal graphic design layout on a 3:4 vertical canvas. Match the reference proportions closely: portrait orientation, safe margins around the text, a large centered hero object, and a bottom information band about one-fifth of the total height. Main subject: one large realistic zongzi wrapped in glossy dark green bamboo leaves with layered olive and forest-green tones, sitting on a bamboo raft tray, centered in the frame and occupying roughly 55% to 60% of the image height. Background: muted yellow-olive green, not bright lime green. Typography: warm off-white rather than pure white. The bottom blocks should be very dark olive green. Add a very large stacked headline at the top center with the exact lines DRAGON BOAT, FESTIVAL, and ZONGZI. Directly below, add bold white Chinese text in two lines reading exactly 一颗粽子 and 承载的文化. Add vertical Chinese words 重午 at top left and 浴兰 at top right, kept close to the corners but inside the safe margins. Keep thin faint diagonal guide lines pointing toward the top headline block. Add left and right mid-poster callouts with large bracketed Chinese characters （端） on the left and （午） on the right. Place THE, AROMA, OF DUAN WU, MAY 5TH in large stacked white letters over the lower middle of the zongzi. Beneath it add a small centered Chinese character 悬 and a smaller herb line 艾 wormwood 菖. Preserve the tiny shoulder annotations as subtle but visible microcopy. Build a dark olive geometric footer with a centered trapezoid panel. Render three footer lines: 二零二四2024六月JUN拾, 农历/五月初五/, and ○端午安康@GAUSSIAN BLUR. Put large vertical Chinese text 天中 in the left footer block and 五黄 in the right footer block. Style keywords: minimal editorial poster, cultural branding visual, clean white typography, centered hero object, soft studio lighting, realistic bamboo leaf texture, balanced symmetry, negative space. Avoid extra props, avoid background clutter, avoid distorted typography."
+    },
+    "zh_comparison": {
+      "language": "zh",
+      "text_fidelity_mode": "balanced",
+      "prompt": "生成一张端午节主题的极简营销海报，使用与参考图一致的 3:4 竖版画幅，接近 690x920 的比例。保留海报型纵向构图，上方预留标题安全边距，左右各保留约 5% 的边缘空白，底部保留约 18% 高度的信息区。主体是一颗写实的大粽子，使用深绿色发亮的粽叶包裹并用叶带扎紧，摆放在横向竹排托盘上，主体居中，并占据画面约 55% 到 60% 的高度。背景不是鲜亮草绿，而是偏黄橄榄调的柔和粽叶绿。粽子的主色要更深，更接近自然叶片的墨绿和橄榄绿层次。文字颜色不要纯白，而要偏温暖米白色。底部深色块要接近黑橄榄绿。整体尽量对称，具有明显留白和清晰层级。顶部使用大面积米白色英文字体，分三行准确呈现：DRAGON BOAT、FESTIVAL、ZONGZI。其下方使用粗体白色中文两行并准确呈现：一颗粽子、承载的文化。顶部左右分别放置竖排中文：重午、浴兰，并加入两条细而略带虚感的米白色斜线形成引导结构。主体中部左右加入辅助文案，保留（端）与（午）这两个大号节日字符。粽子下半部叠加大号白色英文文案，分行准确呈现：THE、AROMA、OF DUAN WU、MAY 5TH。其下加入小号中文“悬”，再加入较小混排文字：艾 wormwood 菖。尽量保留下方两侧细小的文化注释感，即使作为较弱的微小文字也要可见。底部设计深橄榄绿色几何信息区，中间为梯形面板，依次呈现三行文字：二零二四2024六月JUN拾、农历/五月初五/、○端午安康@GAUSSIAN BLUR。左右深色底块中分别放置竖排大字：天中、五黄。整体风格要高级、现代、克制、平面感强，粽叶材质真实，文字尽量清晰，不要额外食物，不要杂乱背景，不要拼贴感，不要文字变形。"
+    }
+  },
+  "template": {
+    "template_id": "sample_dragon_boat_001_v3",
+    "template_name": "dragon-boat-zongzi-poster",
+    "scene_type": "marketing_poster",
+    "editable_slots": [
+      "main_headline_en",
+      "main_subheadline_zh",
+      "mid_tagline_en",
+      "footer_date_line",
+      "footer_lunar_line",
+      "footer_greeting_line"
+    ],
+    "replaceable_elements": [
+      "hero_zongzi_cluster",
+      "bamboo_tray_system",
+      "bottom_footer_system"
+    ],
+    "preserve_style": true,
+    "preserve_layout": true,
+    "revision_history": [],
+    "quality_notes": [
+      "This poster relies heavily on mixed Chinese and English typography, so text rendering is still the riskiest part of reproduction.",
+      "Tiny shoulder microcopy and some footer details should be OCR-confirmed in an automated pipeline."
+    ]
+  },
+  "review_summary": {
+    "high_confidence_slots": [
+      "main_headline_en",
+      "main_subheadline_zh",
+      "mid_tagline_en",
+      "left_footer_block",
+      "right_footer_block"
+    ],
+    "needs_review_slots": [
+      "center_hanging_char",
+      "herb_line_mixed",
+      "footer_date_line"
+    ],
+    "notes": [
+      "Large text is stable enough for prompt reconstruction.",
+      "Tiny mixed-language cultural annotations should be treated as optional fidelity details in generation round one."
+    ]
+  }
+}

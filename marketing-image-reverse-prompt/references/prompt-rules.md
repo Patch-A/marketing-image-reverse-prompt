@@ -83,6 +83,12 @@ Prefer concrete wording such as:
 
 If available, include compact swatch-like targets in analysis output so the prompt builder can preserve them.
 
+If a palette helper is available, use sampled swatches to anchor:
+- dominant background
+- hero object darks and mids
+- typography tone
+- footer or accent darkness
+
 ## Ornament and Faint-Element Rules
 
 If the reference includes faint lines, guide marks, soft ghost text, or low-opacity structures:

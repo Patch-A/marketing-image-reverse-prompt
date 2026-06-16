@@ -17,8 +17,9 @@ This repository currently includes:
 
 - the skill definition in `marketing-image-reverse-prompt/`
 - reference docs for output schema, prompt rules, model notes, OCR automation, portability, and revision guidance
+- reference docs for output schema, prompt rules, model notes, OCR automation, color automation, portability, and revision guidance
 - adapter prompt templates in `marketing-image-reverse-prompt/templates/adapters/`
-- sample structured outputs in `outputs/`
+- sample structured outputs in `outputs/`, including `outputs/dragon-boat-sample-run-v3.json` as the most complete public example
 
 ## Element blocks
 
@@ -45,6 +46,9 @@ Choose the path that matches your host tool:
 3. OCR helper:
    - install `rapidocr-onnxruntime` or provide a local `tesseract` binary
    - run `python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png`
+4. Palette helper:
+   - install the optional Python dependencies
+   - run `python marketing-image-reverse-prompt/scripts/sample_palette.py path/to/image.png -o palette.json`
 
 ## Example invocations
 
@@ -64,6 +68,12 @@ Analyze this uploaded marketing image as a reusable generation template, not as 
 
 ```bash
 python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png -o ocr.json
+```
+
+### Palette helper only
+
+```bash
+python marketing-image-reverse-prompt/scripts/sample_palette.py path/to/image.png -o palette.json
 ```
 
 ## Target models
@@ -92,7 +102,8 @@ README.md
 
 - The current version is still design- and schema-first.
 - OCR is now assisted by a bundled script, but faint decorative elements and tiny stylized text may still need manual review.
-- Future iterations can add richer OCR providers, palette sampling, template storage, and revision assistance.
+- Palette sampling is now assisted by a bundled script, but semantic color naming still benefits from manual review.
+- Future iterations can add richer OCR providers, tighter palette-to-schema mapping, template storage, and revision assistance.
 
 ## Feedback
 

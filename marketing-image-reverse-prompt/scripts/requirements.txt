@@ -1,3 +1,5 @@
 # Optional OCR dependencies.
 rapidocr-onnxruntime>=1.4
+# Optional image utility dependency used by OCR normalization and palette sampling.
+Pillow>=10.0
 # Tesseract CLI is also supported if installed separately.

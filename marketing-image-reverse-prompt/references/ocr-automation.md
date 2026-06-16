@@ -35,10 +35,12 @@ The script prefers `RapidOCR` when the Python package is available and falls bac
 
 ## Output fields to keep
 
+- `image_size`
 - `text`
 - `language`
 - `confidence`
 - `bbox`
+- `bbox_norm`
 - `review_needed`
 - `source`
 

@@ -36,7 +36,11 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
       "hero_primary_hex": "#3D5421",
       "type_hex": "#F4F0D8",
       "footer_hex": "#2F3B1A",
-      "palette_note": "muted olive green poster with warm off-white typography"
+      "palette_note": "muted olive green poster with warm off-white typography",
+      "swatches": [
+        { "hex": "#9CAF47", "rgb": [156, 175, 71], "ratio": 0.43 },
+        { "hex": "#3D5421", "rgb": [61, 84, 33], "ratio": 0.21 }
+      ]
     },
     "size_constraints": {
       "aspect_ratio": "3:4",
@@ -88,11 +92,16 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
   "ocr": {
     "engine": "rapidocr",
     "language": "auto",
+    "image_size": {
+      "width": 690,
+      "height": 920
+    },
     "items": [
       {
         "text": "headline",
         "confidence": 0.98,
         "bbox": [12, 18, 140, 30],
+        "bbox_norm": [0.0174, 0.0196, 0.2029, 0.0326],
         "review_needed": false,
         "source": "rapidocr"
       }
@@ -165,11 +174,13 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
 - Use `subjects` for coarse scene understanding and `element_blocks` for reusable visual modules that may be swapped independently.
 - Use `element_blocks[].keywords` as the portable subject-swap layer for hero products, props, packaging groups, typography systems, or environment modules.
 - If OCR is used, retain raw OCR candidates in `ocr.items` and promote only reviewed text into `text_slots`.
+- Prefer keeping both `bbox` and `bbox_norm` in OCR output so downstream tools can work in either pixel or normalized space.
 - Keep `prompt_variants` separate by model.
 - Always include the Chinese comparison prompt in `prompt_variants.zh_comparison`.
 - Prefer short arrays of normalized tags over long prose paragraphs in `summary.style` and `summary.layout`.
 - Include `summary.size_constraints` when layout fidelity matters.
 - Include `summary.color_fidelity` when palette matching matters.
+- If palette sampling is available, include `summary.color_fidelity.swatches`.
 - Use `template.revision_history` to track iterative fixes.
 
 ## Revision Mode Additions
