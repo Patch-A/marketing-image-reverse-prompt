@@ -1,6 +1,6 @@
 # marketing-image-reverse-prompt
 
-A Codex skill for reverse-engineering copy-heavy marketing images into reusable prompt templates.
+A reusable workflow for reverse-engineering copy-heavy marketing images into structured prompt templates. It can be used as a Codex skill and adapted for other AI tools that accept prompt schemas, OCR-assisted text slots, or structured prompt payloads.
 
 ## What it does
 
@@ -9,20 +9,21 @@ A Codex skill for reverse-engineering copy-heavy marketing images into reusable 
 - Preserve original copy as editable text slots
 - Output English primary prompts and Chinese comparison prompts
 - Capture layout, size, color, and ornament constraints
-- Support manual revision loops after a first-pass generated result
+- Support OCR-assisted first-pass extraction and manual revision loops
 
 ## Current scope
 
 This repository currently includes:
 
 - the skill definition in `marketing-image-reverse-prompt/`
-- reference docs for output schema, prompt rules, model notes, and revision guidance
+- reference docs for output schema, prompt rules, model notes, OCR automation, portability, and revision guidance
+- adapter prompt templates in `marketing-image-reverse-prompt/templates/adapters/`
 - sample structured outputs in `outputs/`
 
 ## Target models
 
 - `gpt-image-2`
-- `Nano Banana 2`
+- `nano-banana-2`
 
 ## Key ideas
 
@@ -31,6 +32,7 @@ This repository currently includes:
 - Preserve original text language
 - Add layout fidelity controls such as aspect ratio, safe margins, and hero scale
 - Add color fidelity controls and ornament extraction for closer reproduction
+- Keep the output portable across AI tools, not tied to a single host app
 
 ## Repository layout
 
@@ -43,6 +45,6 @@ README.md
 
 ## Notes
 
-- The current version is design- and schema-first.
-- Tiny text and faint decorative elements are explicitly modeled, but OCR automation is not implemented yet.
-- Future iterations can add scripts for OCR, palette sampling, template storage, and revision assistance.
+- The current version is still design- and schema-first.
+- OCR is now assisted by a bundled script, but faint decorative elements and tiny stylized text may still need manual review.
+- Future iterations can add richer OCR providers, palette sampling, template storage, and revision assistance.
