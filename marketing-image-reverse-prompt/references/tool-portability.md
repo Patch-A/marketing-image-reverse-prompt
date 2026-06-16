@@ -15,6 +15,7 @@ Separate the repository into two layers:
 2. Core payload:
    - output schema
    - OCR extraction result
+   - element block inventory
    - text-slot taxonomy
    - prompt assembly rules
    - revision playbook
@@ -22,6 +23,7 @@ Separate the repository into two layers:
 ## What Should Stay Tool-Agnostic
 
 - `text_slots`
+- `element_blocks`
 - `keyword_blocks`
 - `prompt_variants`
 - `ornaments`
