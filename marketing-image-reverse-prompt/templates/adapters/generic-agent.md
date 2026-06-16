@@ -1,7 +1,10 @@
 Task: reverse-engineer a copy-heavy marketing image into a reusable prompt template.
 
 Core output contract:
+- `task`
+- `model_targets`
 - `analysis`
+- `summary`
 - `ocr`
 - `subjects`
 - `text_slots`
