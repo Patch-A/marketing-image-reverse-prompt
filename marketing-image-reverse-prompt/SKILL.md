@@ -1,11 +1,11 @@
 ---
 name: marketing-image-reverse-prompt
-description: Reverse-engineer copy-heavy marketing images into reusable prompt templates, bilingual prompts, editable text slots with role and position metadata, and iterative revision guidance. Use when Codex needs to analyze posters, banners, covers, or other marketing visuals with embedded text; extract image-generation-ready keywords; preserve original copy; produce prompts for gpt-image-2 or Nano Banana 2; save reusable templates; or refine prompts after a user uploads a first-pass generated result.
+description: Reverse-engineer copy-heavy marketing images into reusable prompt templates, bilingual prompts, editable text slots with role and position metadata, and iterative revision guidance. Use when analyzing posters, banners, covers, or other marketing visuals with embedded text; extracting image-generation-ready keywords; preserving original copy; producing prompts for gpt-image-2, Nano Banana 2, or other image tools; saving reusable templates; or refining prompts after a first-pass generated result.
 ---
 
 # Marketing Image Reverse Prompt
 
-Analyze the reference image as a reusable marketing creative template rather than as a one-off caption.
+Analyze the reference image as a reusable marketing creative template rather than as a one-off caption. Keep the workflow tool-agnostic so the same output can be used in Codex, ChatGPT, Claude, Gemini, or any image workflow that accepts structured prompts.
 
 Prioritize reproducibility over literary description. The goal is to output keywords and prompts that can be fed back into an image model, preserve original copy as structured slots, and support a manual closed loop where the user uploads a generated result for further correction.
 
@@ -31,21 +31,22 @@ Do not optimize for:
    - `reverse_from_reference`: analyze a reference marketing image and build a reusable template.
    - `revise_generated_result`: compare a first-pass generated image against the reference and produce a revised prompt.
 2. Confirm the image is a marketing visual with meaningful embedded copy. If it is not, still help, but state that the output is optimized for copy-heavy layouts.
-3. Analyze the image in layers:
+3. If OCR automation is available, run it first and use the raw result as a draft; otherwise read the image manually.
+4. Analyze the image in layers:
    - scene type and marketing intent
    - main subject and supporting elements
    - style, color palette, texture, lighting, and composition
    - aspect ratio, canvas orientation, safe margins, and relative scale
    - decorative guides, faint lines, translucent overlays, and microcopy
    - text hierarchy and layout relationships
-4. Extract every visible text slot and preserve the original text exactly as shown.
-5. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
-6. Generate:
+5. Extract every visible text slot and preserve the original text exactly as shown.
+6. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
+7. Generate:
    - English primary prompts
    - a fully Chinese comparison prompt
    - a structured template object
-7. Save or update the template record when a storage path or template store is available.
-8. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
+8. Save or update the template record when a storage path or template store is available.
+9. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
 
 Read [references/output-schema.md](references/output-schema.md) before producing machine-readable output.
 
@@ -129,6 +130,8 @@ If the user names a target model, generate a model-specific prompt. In this skil
 
 Read [references/prompt-rules.md](references/prompt-rules.md) and [references/model-notes.md](references/model-notes.md) before finalizing prompts.
 
+If adapting the workflow to non-Codex hosts, read [references/tool-portability.md](references/tool-portability.md).
+
 ## Color Fidelity
 
 When the user wants closer reproduction, describe color with more discipline than generic phrases like `green background`.
@@ -196,3 +199,8 @@ When a revision succeeds or reveals a recurring failure mode:
 - note whether the correction appears model-specific
 
 Prefer explicit, inspectable iteration over hidden automatic learning. The first version should evolve through saved history and reusable correction patterns.
+
+
+## OCR Support
+
+When text extraction matters, prefer the bundled OCR helper and then refine the result by visual review. See [references/ocr-automation.md](references/ocr-automation.md).
