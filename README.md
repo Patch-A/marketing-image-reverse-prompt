@@ -93,3 +93,19 @@ README.md
 - The current version is still design- and schema-first.
 - OCR is now assisted by a bundled script, but faint decorative elements and tiny stylized text may still need manual review.
 - Future iterations can add richer OCR providers, palette sampling, template storage, and revision assistance.
+
+## Feedback
+
+This repository is intended to evolve through real poster tests and user feedback.
+
+Please open a GitHub issue if you want to report:
+- OCR misses or text-slot errors
+- poor reconstruction on a specific poster style
+- problems adapting the workflow to another AI tool
+- requests for better subject-swapping or product-swapping support
+
+When possible, include:
+- the source image
+- the OCR result or structured output
+- the target model or host tool
+- what you expected versus what failed
