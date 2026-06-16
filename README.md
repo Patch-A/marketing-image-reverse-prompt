@@ -20,6 +20,18 @@ This repository currently includes:
 - adapter prompt templates in `marketing-image-reverse-prompt/templates/adapters/`
 - sample structured outputs in `outputs/`
 
+## Element blocks
+
+When you need to swap a hero product, main character, packaging group, or display system without rewriting the whole poster, use `element_blocks` as the reusable visual-module layer.
+
+Best fit examples:
+- product clusters
+- spokespeople
+- packaging rows
+- coupon or offer cards
+- typography systems
+- display towers or stage systems
+
 ## Quick start
 
 Choose the path that matches your host tool:
@@ -39,13 +51,13 @@ Choose the path that matches your host tool:
 ### Codex
 
 ```text
-Use $marketing-image-reverse-prompt to analyze this uploaded marketing image into structured `text_slots`, `keyword_blocks`, `prompt_variants`, and a reusable template. Run OCR first if available and keep uncertain microcopy marked for review.
+Use $marketing-image-reverse-prompt to analyze this uploaded marketing image into structured `element_blocks`, `text_slots`, `keyword_blocks`, `prompt_variants`, and a reusable template. Run OCR first if available and keep uncertain microcopy marked for review.
 ```
 
 ### ChatGPT / Claude / Gemini
 
 ```text
-Analyze this uploaded marketing image as a reusable generation template, not as a caption. Return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Preserve exact source wording and use OCR only as a first-pass draft.
+Analyze this uploaded marketing image as a reusable generation template, not as a caption. Return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `element_blocks`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Preserve exact source wording and use OCR only as a first-pass draft.
 ```
 
 ### OCR helper only
