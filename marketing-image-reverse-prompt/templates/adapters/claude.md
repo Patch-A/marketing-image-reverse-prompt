@@ -1,7 +1,10 @@
 Analyze the provided marketing visual as a reusable generation template, not as a general caption.
 
 Follow the shared schema:
+- `task`
+- `model_targets`
 - `analysis`
+- `summary`
 - `ocr`
 - `subjects`
 - `text_slots`
