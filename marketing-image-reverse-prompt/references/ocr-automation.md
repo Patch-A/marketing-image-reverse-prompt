@@ -22,6 +22,12 @@ Use OCR as a first-pass helper for text-heavy marketing images.
 Run the included helper:
 
 ```bash
+pip install -r marketing-image-reverse-prompt/scripts/requirements.txt
+```
+
+Then run:
+
+```bash
 python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png
 ```
 
