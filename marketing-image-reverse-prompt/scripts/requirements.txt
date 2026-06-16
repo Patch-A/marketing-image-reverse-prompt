@@ -1,0 +1,3 @@
+# Optional OCR dependencies.
+rapidocr-onnxruntime>=1.4
+# Tesseract CLI is also supported if installed separately.
