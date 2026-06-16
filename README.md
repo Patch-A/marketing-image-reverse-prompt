@@ -1,6 +1,6 @@
 # marketing-image-reverse-prompt
 
-A Codex skill for reverse-engineering copy-heavy marketing images into reusable prompt templates.
+A reusable workflow for reverse-engineering copy-heavy marketing images into structured prompt templates. It can be used as a Codex skill and adapted for other AI tools that accept prompt schemas, OCR-assisted text slots, or structured prompt payloads.
 
 ## What it does
 
@@ -9,20 +9,67 @@ A Codex skill for reverse-engineering copy-heavy marketing images into reusable 
 - Preserve original copy as editable text slots
 - Output English primary prompts and Chinese comparison prompts
 - Capture layout, size, color, and ornament constraints
-- Support manual revision loops after a first-pass generated result
+- Support OCR-assisted first-pass extraction and manual revision loops
 
 ## Current scope
 
 This repository currently includes:
 
 - the skill definition in `marketing-image-reverse-prompt/`
-- reference docs for output schema, prompt rules, model notes, and revision guidance
+- reference docs for output schema, prompt rules, model notes, OCR automation, portability, and revision guidance
+- adapter prompt templates in `marketing-image-reverse-prompt/templates/adapters/`
 - sample structured outputs in `outputs/`
+
+## Element blocks
+
+When you need to swap a hero product, main character, packaging group, or display system without rewriting the whole poster, use `element_blocks` as the reusable visual-module layer.
+
+Best fit examples:
+- product clusters
+- spokespeople
+- packaging rows
+- coupon or offer cards
+- typography systems
+- display towers or stage systems
+
+## Quick start
+
+Choose the path that matches your host tool:
+
+1. Codex:
+   - use `marketing-image-reverse-prompt/SKILL.md`
+   - load the referenced docs as needed
+2. Other AI tools:
+   - start from `marketing-image-reverse-prompt/templates/adapters/`
+   - pair the chosen adapter with the shared references in `marketing-image-reverse-prompt/references/`
+3. OCR helper:
+   - install `rapidocr-onnxruntime` or provide a local `tesseract` binary
+   - run `python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png`
+
+## Example invocations
+
+### Codex
+
+```text
+Use $marketing-image-reverse-prompt to analyze this uploaded marketing image into structured `element_blocks`, `text_slots`, `keyword_blocks`, `prompt_variants`, and a reusable template. Run OCR first if available and keep uncertain microcopy marked for review.
+```
+
+### ChatGPT / Claude / Gemini
+
+```text
+Analyze this uploaded marketing image as a reusable generation template, not as a caption. Return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `element_blocks`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Preserve exact source wording and use OCR only as a first-pass draft.
+```
+
+### OCR helper only
+
+```bash
+python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png -o ocr.json
+```
 
 ## Target models
 
 - `gpt-image-2`
-- `Nano Banana 2`
+- `nano-banana-2`
 
 ## Key ideas
 
@@ -31,18 +78,34 @@ This repository currently includes:
 - Preserve original text language
 - Add layout fidelity controls such as aspect ratio, safe margins, and hero scale
 - Add color fidelity controls and ornament extraction for closer reproduction
+- Keep the output portable across AI tools, not tied to a single host app
 
 ## Repository layout
 
 ```text
 marketing-image-reverse-prompt/
 outputs/
-work/
 README.md
 ```
 
 ## Notes
 
-- The current version is design- and schema-first.
-- Tiny text and faint decorative elements are explicitly modeled, but OCR automation is not implemented yet.
-- Future iterations can add scripts for OCR, palette sampling, template storage, and revision assistance.
+- The current version is still design- and schema-first.
+- OCR is now assisted by a bundled script, but faint decorative elements and tiny stylized text may still need manual review.
+- Future iterations can add richer OCR providers, palette sampling, template storage, and revision assistance.
+
+## Feedback
+
+This repository is intended to evolve through real poster tests and user feedback.
+
+Please open a GitHub issue if you want to report:
+- OCR misses or text-slot errors
+- poor reconstruction on a specific poster style
+- problems adapting the workflow to another AI tool
+- requests for better subject-swapping or product-swapping support
+
+When possible, include:
+- the source image
+- the OCR result or structured output
+- the target model or host tool
+- what you expected versus what failed

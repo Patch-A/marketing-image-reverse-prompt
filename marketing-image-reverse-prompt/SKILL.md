@@ -1,11 +1,11 @@
 ---
 name: marketing-image-reverse-prompt
-description: Reverse-engineer copy-heavy marketing images into reusable prompt templates, bilingual prompts, editable text slots with role and position metadata, and iterative revision guidance. Use when Codex needs to analyze posters, banners, covers, or other marketing visuals with embedded text; extract image-generation-ready keywords; preserve original copy; produce prompts for gpt-image-2 or Nano Banana 2; save reusable templates; or refine prompts after a user uploads a first-pass generated result.
+description: Reverse-engineer copy-heavy marketing images into reusable prompt templates, bilingual prompts, editable text slots with role and position metadata, and iterative revision guidance. Use when analyzing posters, banners, covers, or other marketing visuals with embedded text; extracting image-generation-ready keywords; preserving original copy; producing prompts for gpt-image-2, Nano Banana 2, or other image tools; saving reusable templates; or refining prompts after a first-pass generated result.
 ---
 
 # Marketing Image Reverse Prompt
 
-Analyze the reference image as a reusable marketing creative template rather than as a one-off caption.
+Analyze the reference image as a reusable marketing creative template rather than as a one-off caption. Keep the workflow tool-agnostic so the same output can be used in Codex, ChatGPT, Claude, Gemini, or any image workflow that accepts structured prompts.
 
 Prioritize reproducibility over literary description. The goal is to output keywords and prompts that can be fed back into an image model, preserve original copy as structured slots, and support a manual closed loop where the user uploads a generated result for further correction.
 
@@ -31,21 +31,23 @@ Do not optimize for:
    - `reverse_from_reference`: analyze a reference marketing image and build a reusable template.
    - `revise_generated_result`: compare a first-pass generated image against the reference and produce a revised prompt.
 2. Confirm the image is a marketing visual with meaningful embedded copy. If it is not, still help, but state that the output is optimized for copy-heavy layouts.
-3. Analyze the image in layers:
+3. If OCR automation is available, run it first and use the raw result as a draft; otherwise read the image manually.
+4. Analyze the image in layers:
    - scene type and marketing intent
    - main subject and supporting elements
    - style, color palette, texture, lighting, and composition
    - aspect ratio, canvas orientation, safe margins, and relative scale
    - decorative guides, faint lines, translucent overlays, and microcopy
    - text hierarchy and layout relationships
-4. Extract every visible text slot and preserve the original text exactly as shown.
-5. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
-6. Generate:
+5. Extract every visible text slot and preserve the original text exactly as shown.
+6. Identify major reusable visual modules such as hero products, spokespeople, props, packaging clusters, typography systems, coupon groups, or branded footer systems.
+7. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
+8. Generate:
    - English primary prompts
    - a fully Chinese comparison prompt
    - a structured template object
-7. Save or update the template record when a storage path or template store is available.
-8. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
+9. Save or update the template record when a storage path or template store is available.
+10. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
 
 Read [references/output-schema.md](references/output-schema.md) before producing machine-readable output.
 
@@ -55,11 +57,39 @@ Always prefer these outputs over a single long paragraph:
 - `analysis`: visual summary and design logic
 - `keyword_blocks`: reusable image-generation keywords
 - `prompt_variants`: English model prompts plus a Chinese comparison prompt
+- `element_blocks`: reusable replaceable visual modules with swap guidance
 - `text_slots`: editable copy with role and position metadata
 - `ornaments`: non-copy graphic elements such as guide lines, faint rules, footer shapes, and low-opacity decorations
 - `template`: reusable template object with history hooks
 
 If the user asks for "keywords," still include the structured blocks. Do not collapse everything into prose unless the user explicitly wants prose only.
+
+## Element Block Rules
+
+Use `element_blocks` for major visual modules that may need to be swapped while preserving the rest of the poster system.
+
+Good candidates include:
+- hero products
+- spokespeople or character figures
+- support props
+- product packaging clusters
+- coupon or offer cards
+- typography systems
+- background architecture or display systems
+- footer brand bars
+
+For each element block, prefer these fields:
+- `element_id`
+- `role`
+- `replaceable`
+- `swap_difficulty`
+- `keywords`
+- `layout_anchor`
+- `bbox_norm`
+- `preserve_when_swapping`
+- `depends_on`
+
+Use `subjects` for coarse scene understanding and `element_blocks` for reusable swap-ready modules.
 
 ## Text Slot Rules
 
@@ -129,6 +159,8 @@ If the user names a target model, generate a model-specific prompt. In this skil
 
 Read [references/prompt-rules.md](references/prompt-rules.md) and [references/model-notes.md](references/model-notes.md) before finalizing prompts.
 
+If adapting the workflow to non-Codex hosts, read [references/tool-portability.md](references/tool-portability.md).
+
 ## Color Fidelity
 
 When the user wants closer reproduction, describe color with more discipline than generic phrases like `green background`.
@@ -163,6 +195,7 @@ When a template store exists, update:
 - template metadata
 - keyword blocks
 - prompt variants
+- element blocks
 - text slots
 - revision history
 - quality notes
@@ -196,3 +229,8 @@ When a revision succeeds or reveals a recurring failure mode:
 - note whether the correction appears model-specific
 
 Prefer explicit, inspectable iteration over hidden automatic learning. The first version should evolve through saved history and reusable correction patterns.
+
+
+## OCR Support
+
+When text extraction matters, prefer the bundled OCR helper and then refine the result by visual review. See [references/ocr-automation.md](references/ocr-automation.md).

@@ -45,3 +45,7 @@ For every slot, include:
 - `replaceable`
 
 Preserve the original language exactly. Do not auto-translate the source slot text.
+
+## OCR Review
+
+When OCR is uncertain, keep the candidate in a raw OCR list first, then promote it into `text_slots` only after visual confirmation. Mark it `review_needed: true` if the text is tiny, vertical, stylized, or partially occluded.
