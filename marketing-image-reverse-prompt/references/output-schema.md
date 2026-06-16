@@ -14,7 +14,7 @@ Use structured output whenever the task goes beyond casual brainstorming.
 - `prompt_variants`
 - `template`
 
-Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode tasks.
+Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode tasks. Add OCR metadata when extraction is used.
 
 ## Core Shape
 
@@ -61,6 +61,18 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
       "attributes": ["transparent cup", "ice cubes", "cream foam"]
     }
   ],
+  "ocr": {
+    "engine": "tesseract",
+    "language": "chi_sim+eng",
+    "items": [
+      {
+        "text": "headline",
+        "confidence": 0.98,
+        "bbox": [12, 18, 140, 30],
+        "review_needed": false
+      }
+    ]
+  },
   "text_slots": [
     {
       "slot_id": "headline",
@@ -124,6 +136,7 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
 ## Field Rules
 
 - Keep `text_slots[].text` exactly as it appears in the source image unless the user explicitly asks for rewritten copy.
+- If OCR is used, retain raw OCR candidates in `ocr.items` and promote only reviewed text into `text_slots`.
 - Keep `prompt_variants` separate by model.
 - Always include the Chinese comparison prompt in `prompt_variants.zh_comparison`.
 - Prefer short arrays of normalized tags over long prose paragraphs in `summary.style` and `summary.layout`.
@@ -150,3 +163,9 @@ Add these fields in revision mode:
 ```
 
 Make each difference concrete and actionable.
+
+## OCR Notes
+
+- Keep OCR candidates and final slots separate.
+- Use `review_needed` for tiny, stylized, vertical, or ambiguous text.
+- Record the OCR engine and language when available.
