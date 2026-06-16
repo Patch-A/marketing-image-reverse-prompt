@@ -40,13 +40,14 @@ Do not optimize for:
    - decorative guides, faint lines, translucent overlays, and microcopy
    - text hierarchy and layout relationships
 5. Extract every visible text slot and preserve the original text exactly as shown.
-6. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
-7. Generate:
+6. Identify major reusable visual modules such as hero products, spokespeople, props, packaging clusters, typography systems, coupon groups, or branded footer systems.
+7. Build structured keyword blocks for subject, style, layout, lighting, and negative constraints.
+8. Generate:
    - English primary prompts
    - a fully Chinese comparison prompt
    - a structured template object
-8. Save or update the template record when a storage path or template store is available.
-9. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
+9. Save or update the template record when a storage path or template store is available.
+10. If the user provides a generated result, compare it to the reference, classify the gaps, and produce a revised prompt and revision notes.
 
 Read [references/output-schema.md](references/output-schema.md) before producing machine-readable output.
 
@@ -56,11 +57,39 @@ Always prefer these outputs over a single long paragraph:
 - `analysis`: visual summary and design logic
 - `keyword_blocks`: reusable image-generation keywords
 - `prompt_variants`: English model prompts plus a Chinese comparison prompt
+- `element_blocks`: reusable replaceable visual modules with swap guidance
 - `text_slots`: editable copy with role and position metadata
 - `ornaments`: non-copy graphic elements such as guide lines, faint rules, footer shapes, and low-opacity decorations
 - `template`: reusable template object with history hooks
 
 If the user asks for "keywords," still include the structured blocks. Do not collapse everything into prose unless the user explicitly wants prose only.
+
+## Element Block Rules
+
+Use `element_blocks` for major visual modules that may need to be swapped while preserving the rest of the poster system.
+
+Good candidates include:
+- hero products
+- spokespeople or character figures
+- support props
+- product packaging clusters
+- coupon or offer cards
+- typography systems
+- background architecture or display systems
+- footer brand bars
+
+For each element block, prefer these fields:
+- `element_id`
+- `role`
+- `replaceable`
+- `swap_difficulty`
+- `keywords`
+- `layout_anchor`
+- `bbox_norm`
+- `preserve_when_swapping`
+- `depends_on`
+
+Use `subjects` for coarse scene understanding and `element_blocks` for reusable swap-ready modules.
 
 ## Text Slot Rules
 
@@ -166,6 +195,7 @@ When a template store exists, update:
 - template metadata
 - keyword blocks
 - prompt variants
+- element blocks
 - text slots
 - revision history
 - quality notes
