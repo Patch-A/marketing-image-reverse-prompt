@@ -1,7 +1,10 @@
 Use the shared `marketing-image-reverse-prompt` method on the uploaded marketing image.
 
 Output a structured result with:
+- `task`
+- `model_targets`
 - `analysis`
+- `summary`
 - `ocr`
 - `subjects`
 - `text_slots`
