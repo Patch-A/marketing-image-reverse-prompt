@@ -69,7 +69,8 @@ Add `differences`, `revision_strategy`, and `revised_prompt` for revision-mode t
         "text": "headline",
         "confidence": 0.98,
         "bbox": [12, 18, 140, 30],
-        "review_needed": false
+        "review_needed": false,
+        "source": "rapidocr"
       }
     ]
   },
