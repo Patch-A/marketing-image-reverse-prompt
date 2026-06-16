@@ -34,6 +34,26 @@ Choose the path that matches your host tool:
    - install `rapidocr-onnxruntime` or provide a local `tesseract` binary
    - run `python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png`
 
+## Example invocations
+
+### Codex
+
+```text
+Use $marketing-image-reverse-prompt to analyze this uploaded marketing image into structured `text_slots`, `keyword_blocks`, `prompt_variants`, and a reusable template. Run OCR first if available and keep uncertain microcopy marked for review.
+```
+
+### ChatGPT / Claude / Gemini
+
+```text
+Analyze this uploaded marketing image as a reusable generation template, not as a caption. Return `task`, `model_targets`, `summary`, `ocr`, `subjects`, `text_slots`, `ornaments`, `keyword_blocks`, `prompt_variants`, and `template`. Preserve exact source wording and use OCR only as a first-pass draft.
+```
+
+### OCR helper only
+
+```bash
+python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png -o ocr.json
+```
+
 ## Target models
 
 - `gpt-image-2`
