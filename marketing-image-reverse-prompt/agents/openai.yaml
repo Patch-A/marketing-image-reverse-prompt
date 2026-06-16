@@ -1,4 +1,7 @@
 interface:
   display_name: "Marketing Image Reverse Prompt"
-  short_description: "Turn copy-heavy marketing images into reusable prompt templates."
-  default_prompt: "Use $marketing-image-reverse-prompt to reverse-engineer this marketing visual into bilingual prompts and editable text slots."
+  short_description: "Reverse-engineer copy-heavy marketing images into reusable prompt templates."
+  default_prompt: "Use $marketing-image-reverse-prompt to analyze this marketing image into bilingual prompts, editable text slots, and OCR-assisted structure."
+
+policy:
+  allow_implicit_invocation: true
