@@ -20,6 +20,20 @@ This repository currently includes:
 - adapter prompt templates in `marketing-image-reverse-prompt/templates/adapters/`
 - sample structured outputs in `outputs/`
 
+## Quick start
+
+Choose the path that matches your host tool:
+
+1. Codex:
+   - use `marketing-image-reverse-prompt/SKILL.md`
+   - load the referenced docs as needed
+2. Other AI tools:
+   - start from `marketing-image-reverse-prompt/templates/adapters/`
+   - pair the chosen adapter with the shared references in `marketing-image-reverse-prompt/references/`
+3. OCR helper:
+   - install `rapidocr-onnxruntime` or provide a local `tesseract` binary
+   - run `python marketing-image-reverse-prompt/scripts/ocr_extract.py path/to/image.png`
+
 ## Target models
 
 - `gpt-image-2`
@@ -39,7 +53,6 @@ This repository currently includes:
 ```text
 marketing-image-reverse-prompt/
 outputs/
-work/
 README.md
 ```
 
